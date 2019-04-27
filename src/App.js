@@ -1,25 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import Footer from "./components/Footer";
+import InputBox from "./components/InputBox";
+import OutputBox from "./components/OutputBox";
+import parseJSON from "./utils/parseJSON";
+import "./style/flexGrid.css";
 
 function App() {
+  const [outputText, setOutputText] = useState("");
+  const [inputText, setInputText] = useState("");
+  const [submitText, setSubmitText] = useState("");
+  useEffect(() => {
+    (async () => {
+      const url = process.env.BASE_URL || "localhost";
+      const result = await fetch(`http://${url}/acronyms?bullets=${submitText}`);
+      const json = await result.json();
+      let output = json.acronyms.length > 0 ? parseJSON(json) : "";
+      setOutputText(output);
+    })();
+  }, [submitText]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>Aloha Spark Acronym Tool!</h1>
+      <div className="flexContainer">
+        <InputBox inputText={inputText} setInputText={setInputText} setSubmitText={setSubmitText} />
+        <OutputBox outputText={outputText} setOutputText={setOutputText} />
+      </div>
+      <Footer />
+    </>
   );
 }
 
