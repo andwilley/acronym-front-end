@@ -3,6 +3,8 @@ import Footer from "./components/Footer";
 import InputBox from "./components/InputBox";
 import OutputBox from "./components/OutputBox";
 import parseJSON from "./utils/parseJSON";
+import { asyncTryCatch } from "./utils/functional";
+import { ERROR_API_RETURN, ERROR } from "./const";
 import "./style/flexGrid.css";
 
 function App() {
@@ -11,11 +13,14 @@ function App() {
   const [submitText, setSubmitText] = useState("");
   useEffect(() => {
     (async () => {
-      const url = process.env.REACT_APP_API_BASE_URL || 'localhost';
-      // this error isn't handled if fetch fails
-      const result = await fetch(`http://${url}/acronyms?bullets=${submitText}`);
-      const json = await result.json();
-      let output = json.acronyms.length > 0 ? parseJSON(json) : "";
+      const url = process.env.REACT_APP_API_BASE_URL || "localhost";
+      const attempt = await asyncTryCatch(() =>
+        fetch(`http://${url}/acronyms?bullets=${submitText}`)
+      );
+      const result = attempt.fold(e => ERROR, c => c);
+      const json = result !== ERROR ? await result.json() : ERROR_API_RETURN;
+      let output = json.acronyms.length === 0 ? "" : parseJSON(json);
+      console.log(output);
       setOutputText(output);
     })();
   }, [submitText]);
