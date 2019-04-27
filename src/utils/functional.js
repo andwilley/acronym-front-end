@@ -19,11 +19,3 @@ export const tryCatch = f => {
     return Left(e);
   }
 };
-
-export const asyncTryCatch = async f => {
-  try {
-    return Right(await f());
-  } catch (e) {
-    return Left(e);
-  }
-};
