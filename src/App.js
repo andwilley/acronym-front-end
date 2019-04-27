@@ -11,7 +11,8 @@ function App() {
   const [submitText, setSubmitText] = useState("");
   useEffect(() => {
     (async () => {
-      const url = process.env.BASE_URL || "localhost";
+      const url = process.env.REACT_APP_API_BASE_URL || 'localhost';
+      // this error isn't handled if fetch fails
       const result = await fetch(`http://${url}/acronyms?bullets=${submitText}`);
       const json = await result.json();
       let output = json.acronyms.length > 0 ? parseJSON(json) : "";
