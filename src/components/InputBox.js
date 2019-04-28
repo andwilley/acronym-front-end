@@ -1,7 +1,7 @@
 import React from 'react';
 import { genericAction } from '../actions/actionCreators';
 
-const InputBox = ({inputText, dispatch}) => (
+const InputBox = ({ inputText, dispatch }) => (
   <>
     <textarea
       id="inputText"

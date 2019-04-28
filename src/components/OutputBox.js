@@ -1,5 +1,5 @@
-import React from "react";
-import { genericAction } from "../actions/actionCreators";
+import React from 'react';
+import { genericAction } from '../actions/actionCreators';
 
 const OutputBox = ({ outputText, dispatch }) => (
   <>
@@ -8,7 +8,7 @@ const OutputBox = ({ outputText, dispatch }) => (
       className="button"
       type="button"
       value="Clear"
-      onClick={() => dispatch(genericAction("setOutput", ""))}
+      onClick={() => dispatch(genericAction('setOutput', ''))}
     />
   </>
 );
