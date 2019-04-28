@@ -1,18 +1,19 @@
 import React from 'react';
+import { genericAction } from '../actions/actionCreators';
 
-const InputBox = ({inputText, setInputText, setSubmitText}) => (
+const InputBox = ({inputText, dispatch}) => (
   <>
     <textarea
       id="inputText"
       placeholder="Enter text here."
       value={inputText}
-      onChange={e => setInputText(e.target.value)}
+      onChange={e => dispatch(genericAction('setInput', e.target.value))}
     />
     <input
       className="button"
       type="button"
       value="Submit"
-      onClick={() => setSubmitText(inputText)}
+      onClick={() => dispatch(genericAction('submitInput', inputText))}
     />
   </>
 );

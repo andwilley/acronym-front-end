@@ -1,9 +1,15 @@
-import React from 'react';
+import React from "react";
+import { genericAction } from "../actions/actionCreators";
 
-const OutputBox = ({outputText, setOutputText}) => (
+const OutputBox = ({ outputText, dispatch }) => (
   <>
     <textarea id="outputText" value={outputText} />
-    <input className="button" type="button" value="Clear" onClick={() => setOutputText("")} />
+    <input
+      className="button"
+      type="button"
+      value="Clear"
+      onClick={() => dispatch(genericAction("setOutput", ""))}
+    />
   </>
 );
 
