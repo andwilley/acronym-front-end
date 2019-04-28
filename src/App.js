@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Header from "./components/Header";
 import Footer from "./components/Footer";
 import InputBox from "./components/InputBox";
 import OutputBox from "./components/OutputBox";
@@ -12,7 +13,8 @@ function App() {
   const [submitText, setSubmitText] = useState("");
   useEffect(() => {
     (async () => {
-      const url = process.env.REACT_APP_API_BASE_URL || "localhost";
+      if (!submitText) return;
+      const url = process.env.REACT_APP_API_BASE_URL || "localhost:8080";
       // fetch api is not supported by older browsers...
       const json = await fetch(`http://${url}/acronyms?bullets=${submitText}`)
         .then(response => response.json())
@@ -23,7 +25,7 @@ function App() {
 
   return (
     <>
-      <h1>Aloha Spark Acronym Tool!</h1>
+      <Header />
       <div className="flexContainer">
         <InputBox inputText={inputText} setInputText={setInputText} setSubmitText={setSubmitText} />
         <OutputBox outputText={outputText} setOutputText={setOutputText} />

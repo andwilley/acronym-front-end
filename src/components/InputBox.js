@@ -17,4 +17,4 @@ const InputBox = ({inputText, setInputText, setSubmitText}) => (
   </>
 );
 
-export default InputBox;
+export default React.memo(InputBox);

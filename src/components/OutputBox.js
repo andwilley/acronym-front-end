@@ -7,4 +7,4 @@ const OutputBox = ({outputText, setOutputText}) => (
   </>
 );
 
-export default OutputBox;
+export default React.memo(OutputBox);
