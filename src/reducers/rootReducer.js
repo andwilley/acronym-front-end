@@ -22,6 +22,8 @@ const rootReducer = (state, action) => {
 
 export default rootReducer;
 
+// Selectors
+
 export const getOutputText = state => state.outputText;
 export const getInputText = state => state.inputText;
 export const getSubmitText = state => state.submitText;
