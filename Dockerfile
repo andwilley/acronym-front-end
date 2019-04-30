@@ -14,7 +14,6 @@ RUN npm run build
 # production environment
 FROM nginx:latest
 COPY --from=builder /usr/src/app/build /usr/share/nginx/html
-RUN chgrp -R 0 /usr/share/nginx/html && \
-  chmod -R g=u /usr/share/nginx/html
+RUN chmod -R g=u /usr/share/nginx/html
 EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]
