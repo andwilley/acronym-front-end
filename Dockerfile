@@ -12,6 +12,6 @@ COPY . /usr/src/app
 RUN npm run build
 
 # production environment
-FROM nginx:latest
-COPY --from=builder /usr/src/app/build /usr/share/nginx/html
+FROM httpd:latest
+COPY --from=builder /usr/src/app/build /usr/local/apache2/htdocs/
 EXPOSE 8080
