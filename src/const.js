@@ -3,7 +3,7 @@ export const ERROR_API_RETURN = { acronyms: [{ name: 'error', definition: 'reque
 export const API_BASE_URL = (() => {
   switch (process.env.NODE_ENV) {
     case 'production':
-      return 'localhost:8080';
+      return 'acronym-web-app-acronym.192.168.42.157.nip.io/';
     case 'development':
       return 'localhost:8080';
     case 'test':
