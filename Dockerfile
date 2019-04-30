@@ -13,5 +13,5 @@ RUN npm run build
 
 # production environment
 FROM httpd:latest
-COPY --from=builder /usr/src/app/build /usr/local/apache2/htdocs/
+COPY --from=builder /usr/src/app/build/* /var/www/html/
 EXPOSE 8080
