@@ -14,5 +14,5 @@ RUN npm run build
 # production environment
 FROM nginx:latest
 COPY --from=builder /usr/src/app/build /usr/share/nginx/html
-EXPOSE 80
+EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]
