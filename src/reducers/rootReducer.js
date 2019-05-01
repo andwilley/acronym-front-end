@@ -15,6 +15,11 @@ const rootReducer = (state, action) => {
         ...state,
         submitText: action.payload
       };
+    case 'fetchingAcronyms':
+      return {
+        ...state,
+        fetchingAcronyms: action.payload
+      };
     default:
       return state;
   }
@@ -27,3 +32,4 @@ export default rootReducer;
 export const getOutputText = state => state.outputText;
 export const getInputText = state => state.inputText;
 export const getSubmitText = state => state.submitText;
+export const getFetchingAcronyms = state => state.fetchingAcronyms;

@@ -1,4 +1,5 @@
 export const NOT_FOUND = 'Acronym not found';
+export const WAITING_TEXT = 'Hang on...';
 export const ERROR_API_RETURN = { acronyms: [{ name: 'error', definition: 'request failed' }] };
 export const API_BASE_URL = (() => {
   switch (process.env.NODE_ENV) {
@@ -16,5 +17,6 @@ export const API_BASE_URL = (() => {
 export const INITIAL_STATE = {
   inputText: '',
   outputText: '',
-  submitText: ''
+  submitText: '',
+  fetchingAcronyms: false
 };
