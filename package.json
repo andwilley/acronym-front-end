@@ -12,7 +12,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "flow": "flow"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -30,7 +31,10 @@
     ]
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-flow": "^6.23.0",
     "cypress": "^3.2.0",
-    "eslint": "^5.16.0"
+    "eslint": "^5.16.0",
+    "flow-bin": "^0.98.0"
   }
 }

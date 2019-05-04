@@ -1,6 +1,9 @@
-import { NOT_FOUND } from '../const';
+// @flow
 
-const parseJSON = json =>
+import { NOT_FOUND } from '../const';
+import { type AcronymApiJson } from '../types/types';
+
+const parseJSON = (json: AcronymApiJson): string =>
   json.acronyms.reduce((prev, curr, index) => {
     const separator = index ? '; ' : '';
     const defs = curr.definition ? curr.definition.replace(/,/g, ', ') : NOT_FOUND;

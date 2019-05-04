@@ -1,20 +1,27 @@
 import React from 'react';
-import { genericAction } from '../actions/actionCreators';
+import { actions } from '../actions/actionCreators';
+import { type Action } from '../actions/actionCreators';
 import { WAITING_TEXT } from '../const';
+
+type OutPutBoxProps = {
+  outputText: string,
+  isFetching: boolean,
+  dispatch: React.Dispatch<Action>
+};
 
 /**
  * Display and allow use to clear the returned definitions of acronyms.
- * @param {string} outputText The returned text with acronyms defined.
- * @param {function} dispatch Dispatch function from useReducer.
+ * @param outputText The returned text with acronyms defined.
+ * @param dispatch Dispatch function from useReducer.
  */
-const OutputBox = ({ outputText, isFetching, dispatch }) => (
+const OutputBox = ({ outputText, isFetching, dispatch }: OutPutBoxProps): React.Node => (
   <>
     <textarea id="outputText" value={isFetching ? WAITING_TEXT : outputText} />
     <input
       className="button"
       type="button"
       value="Clear"
-      onClick={() => dispatch(genericAction('setOutput', ''))}
+      onClick={() => dispatch(actions.setOutputText(''))}
     />
   </>
 );
